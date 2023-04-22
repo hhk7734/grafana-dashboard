@@ -102,7 +102,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (rate (container_cpu_usage_seconds_total{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\", node=~\"^$Node$\", name!=\"\"}[2m])) / sum (kube_pod_container_resource_limits{resource=\"cpu\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\", node=~\"^$Node$\"}) * 100",
+          "expr": "sum (rate (container_cpu_usage_seconds_total{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\", node=~\"^$Node$\", container!=\"\"}[2m])) / sum (kube_pod_container_resource_limits{resource=\"cpu\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\", node=~\"^$Node$\"}) * 100",
           "format": "time_series",
           "interval": "10s",
           "intervalFactor": 1,
@@ -185,7 +185,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (container_memory_working_set_bytes{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\", node=~\"^$Node$\", name!=\"\"}) / sum (kube_pod_container_resource_limits{resource=\"memory\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\",node=~\"^$Node$\"}) * 100",
+          "expr": "sum (container_memory_working_set_bytes{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\", node=~\"^$Node$\", container!=\"\"}) / sum (kube_pod_container_resource_limits{resource=\"memory\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\",node=~\"^$Node$\"}) * 100",
           "format": "time_series",
           "interval": "10s",
           "intervalFactor": 1,
@@ -344,7 +344,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (rate (container_cpu_usage_seconds_total{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\", node=~\"^$Node$\", name!=\"\"}[2m]))",
+          "expr": "sum (rate (container_cpu_usage_seconds_total{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\", node=~\"^$Node$\", container!=\"\"}[2m]))",
           "format": "time_series",
           "intervalFactor": 2,
           "range": true,
@@ -422,7 +422,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (kube_pod_container_resource_limits{resource=\"cpu\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\", node=~\"^$Node$\"})",
+          "expr": "sum (kube_pod_container_resource_limits{resource=\"cpu\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\", node=~\"^$Node$\"})",
           "intervalFactor": 2,
           "range": true,
           "refId": "A",
@@ -499,7 +499,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (container_memory_working_set_bytes{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\", node=~\"^$Node$\", name!=\"\"})",
+          "expr": "sum (container_memory_working_set_bytes{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\", node=~\"^$Node$\", container!=\"\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "range": true,
@@ -577,7 +577,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (kube_pod_container_resource_limits{resource=\"memory\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\",node=~\"^$Node$\"})",
+          "expr": "sum (kube_pod_container_resource_limits{resource=\"memory\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\",node=~\"^$Node$\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "range": true,
@@ -808,7 +808,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (rate (container_cpu_usage_seconds_total{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\", node=~\"^$Node$\",name!=\"\"}[1m])) by (pod, node)",
+          "expr": "sum (rate (container_cpu_usage_seconds_total{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\", node=~\"^$Node$\",container!=\"\"}[1m])) by (pod, node)",
           "format": "time_series",
           "hide": false,
           "interval": "10s",
@@ -825,7 +825,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (kube_pod_container_resource_requests{resource=\"cpu\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\", node=~\"^$Node$\"}) by (pod,node)",
+          "expr": "sum (kube_pod_container_resource_requests{resource=\"cpu\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\", node=~\"^$Node$\"}) by (pod,node)",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -840,7 +840,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (kube_pod_container_resource_limits{resource=\"cpu\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\", node=~\"^$Node$\"}) by (pod,node)",
+          "expr": "sum (kube_pod_container_resource_limits{resource=\"cpu\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\", node=~\"^$Node$\"}) by (pod,node)",
           "hide": false,
           "legendFormat": "limit: {{ pod }}",
           "range": true,
@@ -945,7 +945,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (container_memory_working_set_bytes{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\", node=~\"^$Node$\", name!=\"\"}) by (pod,node)",
+          "expr": "sum (container_memory_working_set_bytes{pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\", node=~\"^$Node$\", container!=\"\"}) by (pod,node)",
           "format": "time_series",
           "hide": false,
           "interval": "10s",
@@ -962,7 +962,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (kube_pod_container_resource_requests{resource=\"memory\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\",node=~\"^$Node$\"}) by (pod,node)",
+          "expr": "sum (kube_pod_container_resource_requests{resource=\"memory\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\",node=~\"^$Node$\"}) by (pod,node)",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "rqst: {{ pod }}",
@@ -976,7 +976,7 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (kube_pod_container_resource_limits{resource=\"memory\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\",node=~\"^$Node$\"}) by (pod,node)",
+          "expr": "sum (kube_pod_container_resource_limits{resource=\"memory\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\",node=~\"^$Node$\"}) by (pod,node)",
           "hide": false,
           "legendFormat": "limit: {{ pod }}",
           "range": true,
@@ -1074,7 +1074,7 @@
           "expr": "100 * (kubelet_volume_stats_used_bytes{node=~\"^$Node$\", persistentvolumeclaim=~\".*$Deployment$Statefulset$Daemonset.*$\"} / kubelet_volume_stats_capacity_bytes{node=~\"^$Node$\", persistentvolumeclaim=~\".*$Deployment$Statefulset$Daemonset.*$\"})",
           "format": "time_series",
           "intervalFactor": 2,
-          "legendFormat": "{{ persistentvolumeclaim }} | {{ kubernetes_io_hostname }}",
+          "legendFormat": "{{ persistentvolumeclaim }}",
           "range": true,
           "refId": "A",
           "step": 120
@@ -1171,11 +1171,11 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "sum (rate (container_network_receive_bytes_total{id!=\"/\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\",node=~\"^$Node$\"}[1m])) by (pod, node)",
+          "expr": "sum (rate (container_network_receive_bytes_total{id!=\"/\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\",node=~\"^$Node$\"}[1m])) by (pod, node)",
           "format": "time_series",
           "interval": "10s",
           "intervalFactor": 1,
-          "legendFormat": "-> {{ kubernetes_io_hostname }} | {{ pod_name }}",
+          "legendFormat": "-> {{ pod }}",
           "metric": "network",
           "range": true,
           "refId": "A",
@@ -1187,11 +1187,11 @@
             "uid": "swC98TJ4k"
           },
           "editorMode": "code",
-          "expr": "- sum( rate (container_network_transmit_bytes_total{id!=\"/\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*-[a-z0-9]*$\",node=~\"^$Node$\"}[1m])) by (pod, node)",
+          "expr": "- sum( rate (container_network_transmit_bytes_total{id!=\"/\",pod=~\"^$Deployment$Statefulset$Daemonset-[a-z0-9]*(-[a-z0-9]*)?$\",node=~\"^$Node$\"}[1m])) by (pod, node)",
           "format": "time_series",
           "interval": "10s",
           "intervalFactor": 1,
-          "legendFormat": "<- {{ kubernetes_io_hostname }} | {{ pod_name }}",
+          "legendFormat": "<- {{ pod }}",
           "metric": "network",
           "range": true,
           "refId": "B",
@@ -1242,9 +1242,9 @@
       {
         "allValue": "()",
         "current": {
-          "selected": true,
-          "text": "oneplatform-dev-backend",
-          "value": "oneplatform-dev-backend"
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
@@ -1302,7 +1302,7 @@
       {
         "allValue": "()",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -1332,7 +1332,7 @@
       {
         "allValue": ".*",
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "All",
           "value": "$__all"
         },
@@ -1362,7 +1362,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {
@@ -1383,6 +1383,6 @@
   "timezone": "browser",
   "title": "Kubernetes Deployment Statefulset Daemonset metrics",
   "uid": "oWe9aYxmk",
-  "version": 5,
+  "version": 14,
   "weekStart": ""
 }
